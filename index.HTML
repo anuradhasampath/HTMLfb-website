@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Rotator</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        button {
+            margin-top: 20px;
+            padding: 15px 30px;
+            font-size: 18px;
+            color: #fff;
+            background-color: #007BFF;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            width: 100%;
+            max-width: 300px;
+            box-sizing: border-box;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        // Array of local image paths
+        const images = [
+            './images/image1.gif',
+            './images/image2.gif',
+            './images/image3.gif',
+            './images/image4.gif'
+        ];
+
+        // Retrieve current image index from localStorage
+        let index = parseInt(localStorage.getItem('imageIndex')) || 0;
+
+        // Increment the index for the next refresh
+        index = (index + 1) % images.length;
+
+        // Save the updated index to localStorage
+        localStorage.setItem('imageIndex', index);
+
+        // Get the current image
+        const currentImage = images[index];
+
+        // Inject the image into the HTML
+        document.write(`<img src="${currentImage}" alt="Rotating Image">`);
+    </script>
+
+    <button onclick="window.location.href='tel:+1234567890'">Call Me</button>
+    <button onclick="alert('More photos coming soon!')">More Photos</button>
+    <button onclick="window.location.href='sms:+1234567890'">Message Me</button>
+    <button onclick="alert('More videos coming soon!')">More Videos</button>
+</body>
+</html>
